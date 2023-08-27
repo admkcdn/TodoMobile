@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var todoController = TodoController()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        TodoListView()
+            
     }
 }
 
