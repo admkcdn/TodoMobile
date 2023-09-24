@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3AB9312AA479BE002A025C /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A3AB9302AA479BE002A025C /* AlertKit */; };
+		1A9B13B92AB76DE300930B55 /* TodoListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9B13B82AB76DE300930B55 /* TodoListManager.swift */; };
 		1AC574512A9AAE600003A509 /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC574502A9AAE600003A509 /* TodoApp.swift */; };
 		1AC574532A9AAE600003A509 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC574522A9AAE600003A509 /* ContentView.swift */; };
 		1AC574552A9AAE610003A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC574542A9AAE610003A509 /* Assets.xcassets */; };
@@ -23,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A9B13B82AB76DE300930B55 /* TodoListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListManager.swift; sourceTree = "<group>"; };
 		1AC5744D2A9AAE600003A509 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC574502A9AAE600003A509 /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		1AC574522A9AAE600003A509 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3AB9312AA479BE002A025C /* AlertKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +99,7 @@
 				1AC5746D2A9B66E30003A509 /* TodoManager.swift */,
 				1AC5746F2A9B8C050003A509 /* TodoModel.swift */,
 				1AC574712A9BA8D20003A509 /* TodoViewModel.swift */,
+				1A9B13B82AB76DE300930B55 /* TodoListManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,6 +139,9 @@
 			dependencies = (
 			);
 			name = Todo;
+			packageProductDependencies = (
+				1A3AB9302AA479BE002A025C /* AlertKit */,
+			);
 			productName = Todo;
 			productReference = 1AC5744D2A9AAE600003A509 /* Todo.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +170,9 @@
 				Base,
 			);
 			mainGroup = 1AC574442A9AAE600003A509;
+			packageReferences = (
+				1A3AB92F2AA479BE002A025C /* XCRemoteSwiftPackageReference "AlertKit" */,
+			);
 			productRefGroup = 1AC5744E2A9AAE600003A509 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -197,6 +208,7 @@
 				1AC574652A9B14350003A509 /* TodoListView.swift in Sources */,
 				1AC574612A9B0EAC0003A509 /* ToDoRowView.swift in Sources */,
 				1AC5746E2A9B66E30003A509 /* TodoManager.swift in Sources */,
+				1A9B13B92AB76DE300930B55 /* TodoListManager.swift in Sources */,
 				1AC574722A9BA8D20003A509 /* TodoViewModel.swift in Sources */,
 				1AC574632A9B0F010003A509 /* Todo.swift in Sources */,
 			);
@@ -329,6 +341,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Todo/Preview Content\"";
 				DEVELOPMENT_TEAM = J5N3DMUK2A;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -358,6 +371,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Todo/Preview Content\"";
 				DEVELOPMENT_TEAM = J5N3DMUK2A;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -399,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A3AB92F2AA479BE002A025C /* XCRemoteSwiftPackageReference "AlertKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparrowcode/AlertKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A3AB9302AA479BE002A025C /* AlertKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A3AB92F2AA479BE002A025C /* XCRemoteSwiftPackageReference "AlertKit" */;
+			productName = AlertKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1AC574452A9AAE600003A509 /* Project object */;
 }

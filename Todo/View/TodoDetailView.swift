@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import AlertKit
 
 struct TodoDetailView: View {
     @State var todo: Todo
+    @StateObject var vm = TodoViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack{
@@ -18,20 +21,33 @@ struct TodoDetailView: View {
                     TextField("Açıklama", text: $todo.description, axis: .vertical)
                 } footer: {
                     HStack{
-//                        Text("Oluşturma Tarihi: \(Formatter.dateFormat.string(from: todo.createAt))")
+                        //                        Text("Oluşturma Tarihi: \(Formatter.dateFormat.string(from: todo.createAt))")
                     }
                 }
             }
             .scrollDisabled(true)
             .toolbar{
                 Button{
+                    print("Button was pressed")
+                    let feedbackGenerator = UISelectionFeedbackGenerator()
+                    feedbackGenerator.prepare()
                     
+                    Task{
+                        await vm.updateTodo(todo: Todo(id: $todo.id, title: $todo.title.wrappedValue , description: $todo.description.wrappedValue, progress: $todo.progress.wrappedValue))
+                    }
+                    
+                    AlertKitAPI.present(
+                        title: "Güncellendi",
+                        icon: .done,
+                        style: .iOS17AppleMusic,
+                        haptic: .success
+                    )
+                    self.presentationMode.wrappedValue.dismiss()
                 }label: {
                     Image(systemName: "pencil.line")
                     Text("Kaydet")
                 }
             }
-            
         }
     }
 }

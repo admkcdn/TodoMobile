@@ -53,4 +53,56 @@ struct APIService {
         return result
     }
     
+    func updateTodoAsync(todo: Todo) async {
+        let baseUrl = URL(string: BASE_URL)!
+        let fullUrl = baseUrl.appendingPathComponent("/todo/\(Int(todo.id))", isDirectory: false)
+        
+        var request = URLRequest(url: fullUrl)
+        
+        request.httpMethod = "PUT"
+        request.allHTTPHeaderFields = [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+
+        do {
+            request.httpBody = try JSONEncoder().encode(todo)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            if let responseJSONData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                print("Response JSON data = \(responseJSONData)")
+            }
+        } catch {
+            print("Error making PUT request: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteTodoAsync(id:Float) async -> Bool{
+        let baseUrl = URL(string: BASE_URL)!
+        let fullUrl = baseUrl.appendingPathComponent("/todo/\(Int(id))",isDirectory: false)
+        
+        var request = URLRequest(url: fullUrl)
+        request.httpMethod = "DELETE"
+        request.allHTTPHeaderFields = ["Accept": "application/json"]
+        
+        do{
+            let (_, response) = try await URLSession.shared.data(for: request)
+            if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            print("Başarıyla silindi.")
+                            return true
+                        } else {
+                            print("Silme işlemi başarısız. Hata kodu: \(httpResponse.statusCode)")
+                        }
+                    }
+        }catch{
+            print(error.localizedDescription)
+        }
+        return false
+    }
 }
